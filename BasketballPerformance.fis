@@ -1,0 +1,58 @@
+[System]
+Name='BasketballPerformance'
+Type='mamdani'
+Version=2.0
+NumInputs=4
+NumOutputs=1
+NumRules=2
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='EFG'
+Range=[0 1]
+NumMFs=3
+MF1='LowEFG':'trapmf',[0 0 0.4 0.5]
+MF2='MediumEFG':'trimf',[0.4 0.5 0.6]
+MF3='HighEFG':'trapmf',[0.5 0.6 1 1]
+
+[Input2]
+Name='To_Ratio'
+Range=[0 1]
+NumMFs=3
+MF1='LowTo_Ratio':'trapmf',[0 0 0.1 0.12]
+MF2='MediumTo_Ratio':'trimf',[0.1 0.15 0.2]
+MF3='HighTo_Ratio':'trapmf',[0.15 0.25 1 1]
+
+[Input3]
+Name='DREB'
+Range=[0 1]
+NumMFs=3
+MF1='LowDREB':'trapmf',[0 0 0.1 0.15]
+MF2='MediumDREB':'trimf',[0.1 0.2 0.3]
+MF3='HighDREB':'trapmf',[0.25 0.35 1 1]
+
+[Input4]
+Name='YOE'
+Range=[0 20]
+NumMFs=3
+MF1='NoviceYOE':'trapmf',[0 0 2 3]
+MF2='ExperiencedYOE':'trimf',[2 5 8]
+MF3='VeteranYOE':'trapmf',[7 10 20 20]
+
+[Output1]
+Name='WinningPercentage'
+Range=[0 1]
+NumMFs=5
+MF1='VeryLowWP':'trapmf',[0 0 0.2 0.4]
+MF2='LowWP':'trimf',[0.2 0.4 0.6]
+MF3='MediumWP':'trimf',[0.4 0.6 0.8]
+MF4='HighWP':'trimf',[0.6 0.8 1]
+MF5='VeryHighWP':'trapmf',[0.8 1 1 1]
+
+[Rules]
+1 3 0 1, 1 (1) : 1
+2 0 0 1, 2 (1) : 1
